@@ -1,0 +1,24 @@
+<Project>
+  <PropertyGroup>
+    <KFAppLifecycleDocsFolderName Condition="'$(KFAppLifecycleDocsFolderName)' == ''">KoreForge.AppLifecycle</KFAppLifecycleDocsFolderName>
+    <KFAppLifecycleDocsTargetRoot Condition="'$(KFAppLifecycleDocsTargetRoot)' == '' and '$(SolutionDir)' != ''">$(SolutionDir)doc\$(KFAppLifecycleDocsFolderName)\</KFAppLifecycleDocsTargetRoot>
+    <KFAppLifecycleDocsSourceRoot Condition="'$(KFAppLifecycleDocsSourceRoot)' == ''">$(MSBuildThisFileDirectory)..\doc\</KFAppLifecycleDocsSourceRoot>
+  </PropertyGroup>
+
+  <ItemGroup Condition="'$(SolutionDir)' != ''">
+    <KFAppLifecycleDoc Include="$(KFAppLifecycleDocsSourceRoot)**/*.*" />
+  </ItemGroup>
+
+  <Target Name="KFAppLifecycleCopyDocs"
+          Condition="'$(SolutionDir)' != ''"
+          AfterTargets="Restore"
+          BeforeTargets="BeforeBuild"
+          Inputs="@(KFAppLifecycleDoc)"
+          Outputs="@(KFAppLifecycleDoc->'$(KFAppLifecycleDocsTargetRoot)%(RecursiveDir)%(Filename)%(Extension)')">
+    <Message Text="[KoreForge.AppLifecycle] Syncing docs to $(KFAppLifecycleDocsTargetRoot)" Importance="low" />
+    <MakeDir Directories="$(KFAppLifecycleDocsTargetRoot)" />
+    <Copy SourceFiles="@(KFAppLifecycleDoc)"
+          DestinationFiles="@(KFAppLifecycleDoc->'$(KFAppLifecycleDocsTargetRoot)%(RecursiveDir)%(Filename)%(Extension)')"
+          SkipUnchangedFiles="true" />
+  </Target>
+</Project>

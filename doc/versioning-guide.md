@@ -102,7 +102,7 @@ dotnet build src/KF.AppLifecycle/KF.AppLifecycle.csproj -p:MinVerVerbosity=norma
 | Bug fix / patch release | `.\bin\git-push-nuget.ps1 -Version 1.2.1 -Note "Fix bug Y"` |
 | Preview/beta release | `.\bin\git-push-nuget.ps1 -Version 1.4.0-beta.1 -Note "Preview"` |
 
-## Relation to Other Khaos Libraries
+## Relation to Other KoreForge Libraries
 
 All KoreForge.* repositories follow this same versioning pattern:
 - Each solution has its own tag prefix (e.g., `KoreForge.Logging/v`, `KoreForge.Kafka/v`)

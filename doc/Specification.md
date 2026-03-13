@@ -857,7 +857,7 @@ Suggested:
 
 - `PackageId`: `KoreForge.AppLifecycle`
     
-- `Authors`: `Derick Olivier` (or `Khaos` – your call)
+- `Authors`: `Derick Olivier` (or `KoreForge` – your call)
     
 - `Description`:
     

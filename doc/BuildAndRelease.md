@@ -5,10 +5,10 @@ Everything below assumes execution from the repository root. Test artifacts are 
 ## Prerequisites
 
 - .NET SDK 10.0 for builds.
-- PowerShell 7+ for helper scripts under `bin/`.
+- PowerShell 7+ for helper scripts under `scr/`.
 - Local dotnet tools restored (`dotnet tool restore`).
 
-## Helper Scripts (`bin/`)
+## Helper Scripts (`scr/`)
 
 All scripts are in the `/bin` folder and auto-locate the repo root.
 
@@ -24,7 +24,7 @@ All scripts are in the `/bin` folder and auto-locate the repo root.
 Run scripts from any location:
 
 ```powershell
-.\bin\build-test-codecoverage.ps1 -Open
+.\scr\build-test-codecoverage.ps1 -Open
 ```
 
 ## Cleaning the Workspace
@@ -33,7 +33,7 @@ Run scripts from any location:
 | --- | --- |
 | Standard clean | `dotnet clean` |
 | Release clean | `dotnet clean -c Release` |
-| Clean + delete /out | `.\bin\build-clean.ps1` |
+| Clean + delete /out | `.\scr\build-clean.ps1` |
 | Git hard clean (removes ALL untracked files) | `git clean -xdf` |
 
 ## Building
@@ -53,14 +53,14 @@ Run scripts from any location:
 | Default unit tests | `dotnet test` |
 | Release config tests | `dotnet test -c Release` |
 | With HTML test log | `dotnet test --logger:"html;LogFileName=TestResults.html" --results-directory out/TestResults` |
-| Full rebuild + test | `.\bin\build-test.ps1` |
+| Full rebuild + test | `.\scr\build-test.ps1` |
 
 ## Code Coverage
 
 ### Script (recommended)
 
 ```powershell
-.\bin\build-test-codecoverage.ps1 -Open
+.\scr\build-test-codecoverage.ps1 -Open
 ```
 
 This rebuilds the solution, runs tests (coverlet.msbuild collects coverage), then generates HTML + Cobertura reports.
@@ -94,7 +94,7 @@ Start-Process (Resolve-Path .\out\TestResults\coverage\index.html)
 | Pack NuGet (drops into `artifacts/`) | `dotnet pack src/KF.AppLifecycle/KF.AppLifecycle.csproj -c Release` |
 | Inspect `.nupkg` | `dotnet nuget locals all --list` + `tar -tf artifacts/KoreForge.AppLifecycle.<version>.nupkg` |
 | Push to NuGet.org | `dotnet nuget push artifacts/KoreForge.AppLifecycle.<version>.nupkg --api-key <KEY> --source https://api.nuget.org/v3/index.json --skip-duplicate` |
-| Tag and push for CI | `.\bin\git-push-nuget.ps1 -Version 1.2.0 -Note "Add feature X"` |
+| Tag and push for CI | `.\scr\git-push-nuget.ps1 -Version 1.2.0 -Note "Add feature X"` |
 
 ## Useful Extras
 

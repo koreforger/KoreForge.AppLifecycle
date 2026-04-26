@@ -16,7 +16,7 @@ Example release tag: `KoreForge.AppLifecycle/v1.4.0`
 
 ## Versioning Scripts
 
-Version tags are managed with `bin/git-push-nuget.ps1`.
+Version tags are managed with `scr/git-push-nuget.ps1`.
 
 ### Check the current version
 
@@ -32,7 +32,7 @@ dotnet build src/KF.AppLifecycle/KF.AppLifecycle.csproj -p:MinVerVerbosity=norma
 
 ```powershell
 # Push any uncommitted changes, create the annotated tag, and push it
-.\bin\git-push-nuget.ps1 -Version 1.2.0 -Note "Brief release note"
+.\scr\git-push-nuget.ps1 -Version 1.2.0 -Note "Brief release note"
 ```
 
 ## Semantic Versioning Rules
@@ -48,14 +48,14 @@ dotnet build src/KF.AppLifecycle/KF.AppLifecycle.csproj -p:MinVerVerbosity=norma
 
 1. Ensure the working tree is clean and tests pass:
    ```powershell
-   .\bin\build-test.ps1
+   .\scr\build-test.ps1
    ```
 
 2. Decide the new SemVer (MAJOR.MINOR.PATCH) according to the rules above.
 
 3. Create and push the release tag (commits any pending changes first):
    ```powershell
-   .\bin\git-push-nuget.ps1 -Version 1.2.0 -Note "Add feature X"
+   .\scr\git-push-nuget.ps1 -Version 1.2.0 -Note "Add feature X"
    ```
 
 4. Build and pack using the tagged version:
@@ -76,14 +76,14 @@ dotnet build src/KF.AppLifecycle/KF.AppLifecycle.csproj -p:MinVerVerbosity=norma
 - These builds are suitable for internal consumption, previews, or testing feeds but should not be published as official releases.
 - To publish a preview release, use a pre-release tag like `1.4.0-beta.1`:
   ```powershell
-  .\bin\git-push-nuget.ps1 -Version 1.4.0-beta.1 -Note "Preview release"
+  .\scr\git-push-nuget.ps1 -Version 1.4.0-beta.1 -Note "Preview release"
   ```
 
 ## Do's and Don'ts
 
 **Do:**
   - ✅ Use `git tag --list "KoreForge.AppLifecycle/v*"` to check current version before releasing
-- ✅ Use `bin/git-push-nuget.ps1` to create version tags
+- ✅ Use `scr/git-push-nuget.ps1` to create version tags
 - ✅ Follow the SemVer rules when choosing MAJOR vs MINOR vs PATCH
 - ✅ Ensure tags are pushed to origin so CI sees the same version
 
@@ -97,10 +97,10 @@ dotnet build src/KF.AppLifecycle/KF.AppLifecycle.csproj -p:MinVerVerbosity=norma
 | Scenario | Command |
 | --- | --- |
 | Check current version | `git tag --list "KoreForge.AppLifecycle/v*" --sort=-version:refname` |
-| Breaking change release | `.\bin\git-push-nuget.ps1 -Version 2.0.0 -Note "Breaking: ..."` |
-| New feature release | `.\bin\git-push-nuget.ps1 -Version 1.3.0 -Note "Add feature X"` |
-| Bug fix / patch release | `.\bin\git-push-nuget.ps1 -Version 1.2.1 -Note "Fix bug Y"` |
-| Preview/beta release | `.\bin\git-push-nuget.ps1 -Version 1.4.0-beta.1 -Note "Preview"` |
+| Breaking change release | `.\scr\git-push-nuget.ps1 -Version 2.0.0 -Note "Breaking: ..."` |
+| New feature release | `.\scr\git-push-nuget.ps1 -Version 1.3.0 -Note "Add feature X"` |
+| Bug fix / patch release | `.\scr\git-push-nuget.ps1 -Version 1.2.1 -Note "Fix bug Y"` |
+| Preview/beta release | `.\scr\git-push-nuget.ps1 -Version 1.4.0-beta.1 -Note "Preview"` |
 
 ## Relation to Other KoreForge Libraries
 

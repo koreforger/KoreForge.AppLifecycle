@@ -43,7 +43,7 @@ Run scripts from any location:
 | Restore dependencies | `dotnet restore` |
 | Build (Debug) | `dotnet build` |
 | Build (Release) | `dotnet build -c Release` |
-| Build the solution explicitly | `dotnet build KoreForge.AppLifecycle.sln -c Release` |
+| Build the solution explicitly | `dotnet build KoreForge.AppLifecycle.slnx -c Release` |
 | Build only the library | `dotnet build src/KF.AppLifecycle/KF.AppLifecycle.csproj` |
 
 ## Testing

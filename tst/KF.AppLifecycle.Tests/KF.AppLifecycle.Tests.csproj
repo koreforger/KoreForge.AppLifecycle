@@ -25,7 +25,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\KF.AppLifecycle\KF.AppLifecycle.csproj" />
+    <PackageReference Include="KoreForge.AppLifecycle" VersionOverride="1.0.1-alpha" />
   </ItemGroup>
 
 </Project>

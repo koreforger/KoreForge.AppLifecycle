@@ -1,8 +1,8 @@
 <Solution>
   <Folder Name="/src/">
-    <Project Path="src/KF.AppLifecycle/KF.AppLifecycle.csproj" />
+    <Project Path="src/KoreForge.AppLifecycle/KoreForge.AppLifecycle.csproj" />
   </Folder>
   <Folder Name="/tst/">
-    <Project Path="tst/KF.AppLifecycle.Tests/KF.AppLifecycle.Tests.csproj" />
+    <Project Path="tst/KoreForge.AppLifecycle.Tests/KoreForge.AppLifecycle.Tests.csproj" />
   </Folder>
 </Solution>

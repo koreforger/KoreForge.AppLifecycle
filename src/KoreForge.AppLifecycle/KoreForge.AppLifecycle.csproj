@@ -1,5 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
-
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFrameworks>net10.0</TargetFrameworks>
     <ImplicitUsings>enable</ImplicitUsings>
@@ -14,31 +13,26 @@
     <PackageTags>lifecycle;startup;shutdown;scheduler</PackageTags>
     <SignAssembly>false</SignAssembly>
   </PropertyGroup>
-
   <ItemGroup>
     <Content Include="content/AppLifecycle/Startup/_README_Startup.txt" Pack="true" PackagePath="contentFiles/any/any/AppLifecycle/Startup/" />
     <Content Include="content/AppLifecycle/Shutdown/_README_Shutdown.txt" Pack="true" PackagePath="contentFiles/any/any/AppLifecycle/Shutdown/" />
     <Content Include="content/AppLifecycle/Scheduled/Triggers/_README_Triggers.txt" Pack="true" PackagePath="contentFiles/any/any/AppLifecycle/Scheduled/Triggers/" />
     <Content Include="content/AppLifecycle/Scheduled/Actions/_README_Actions.txt" Pack="true" PackagePath="contentFiles/any/any/AppLifecycle/Scheduled/Actions/" />
   </ItemGroup>
-
   <ItemGroup>
     <None Include="..\..\README.md" Pack="true" PackagePath="" Link="README.md" />
   </ItemGroup>
-
   <ItemGroup>
-    <None Include="..\..\doc\**\*.*" Pack="true" PackagePath="doc\%(RecursiveDir)%(Filename)%(Extension)" />
+    <!-- Exclude any subdirectories that the buildTransitive copy-docs target may create in doc/ when this solution is a consumer of itself. -->
+    <None Include="..\..\doc\**\*.*" Exclude="..\..\doc\$(MSBuildProjectName)\**" Pack="true" PackagePath="doc\%(RecursiveDir)%(Filename)%(Extension)" />
     <None Include="buildTransitive\**\*.targets" Pack="true" PackagePath="buildTransitive\%(Filename)%(Extension)" />
   </ItemGroup>
-
   <ItemGroup>
     <FrameworkReference Include="Microsoft.AspNetCore.App" />
   </ItemGroup>
-
   <ItemGroup>
     <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleToAttribute">
-      <_Parameter1>KF.AppLifecycle.Tests</_Parameter1>
+      <_Parameter1>KoreForge.AppLifecycle.Tests</_Parameter1>
     </AssemblyAttribute>
   </ItemGroup>
-
 </Project>

@@ -57,10 +57,4 @@ This library has no external time or clock dependencies. Scheduling uses `TimePr
   - DSL validation tests if new builder rules are introduced.
   - Scheduler/host tests for timing or lifecycle changes.
 - Use the provided `TestHostEnvironment` and `TestLogger<T>` doubles when host APIs are needed.
-- Run `dotnet test` from the repo root; see `doc/BuildAndRelease.md` for coverage commands.
-
-## Submitting Changes
-
-1. Update docs as necessary (`README.md` plus any relevant files under `doc/`).
-2. Keep commits scoped and include rationale in messages.
-3. Ensure `dotnet test` and any coverage/reporting commands described in the build guide succeed locally before opening a PR.
+- Run `dotnet test` from the repo root.

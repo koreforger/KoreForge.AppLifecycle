@@ -148,3 +148,10 @@ ehthumbs.db
 *.swp
 *.bak
 *.orig
+
+
+# Prevent accidental commits of NuGet-extracted package content
+/doc/KoreForge.*/
+/doc/Event.*/
+/docs/KoreForge.*/
+/docs/Event.*/
